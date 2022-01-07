@@ -1,0 +1,14 @@
+[package]
+name = "intercomm"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+io-extras = "0.12.2"
+ordered-float = "2.10.0"
+
+[dev-dependencies]
+io-lifetimes = "0.4.4"
+
+[target.'cfg(not(windows))'.dependencies]
+rustix = "0.31.3"
