@@ -102,6 +102,9 @@ fn _make_command(
         #[cfg(unix)]
         unsafe {
             command.pre_exec(move || {
+
+            // FIXME: close spurious non-`O_CLOEXEC` fds?
+
             for (fd, target) in &fds {
                 let target = rustix::io::OwnedFd::from_raw_fd(*target);
 
