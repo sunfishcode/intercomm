@@ -106,11 +106,11 @@ fn _make_command(
             // FIXME: close spurious non-`O_CLOEXEC` fds?
 
             for (fd, target) in &fds {
-                let target = rustix::io::OwnedFd::from_raw_fd(*target);
+                let mut target = rustix::fd::OwnedFd::from_raw_fd(*target);
 
                 // FIXME: Handle the case where targets alias fds.
                 #[cfg(not(windows))]
-                rustix::io::dup2(&**fd, &target)?;
+                rustix::io::dup2(&**fd, &mut target)?;
                 #[cfg(windows)]
                 todo!("what we really want is OwnedFd::try_clone; finish https://github.com/rust-lang/rust/pull/88794");
 

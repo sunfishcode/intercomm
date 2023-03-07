@@ -1,5 +1,5 @@
 use intercomm::{make_command, Convention};
-use io_lifetimes::IntoFd;
+use io_lifetimes::OwnedFd;
 use std::io::Write;
 use std::sync::Arc;
 
@@ -8,7 +8,7 @@ fn main() {
 
     let output = make_command(
         "target/debug/examples/debug",
-        &["--use-fd".into(), Arc::new(file.into_fd()).into()],
+        &["--use-fd".into(), Arc::new(OwnedFd::from(file)).into()],
         &[],
         Convention::Implicit,
     )
