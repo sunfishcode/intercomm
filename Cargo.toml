@@ -4,11 +4,11 @@ version = "0.0.0"
 edition = "2021"
 
 [dependencies]
-io-extras = "0.17.0"
+io-extras = "0.18.0"
 ordered-float = "3.0.0"
 
 [dev-dependencies]
-io-lifetimes = "1.0.0"
+io-lifetimes = "2.0.0"
 
 [target.'cfg(not(windows))'.dependencies]
-rustix = { version = "0.37.0" }
+rustix = { version = "0.38.0" }
